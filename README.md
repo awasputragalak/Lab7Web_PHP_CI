@@ -478,6 +478,37 @@ Implementasi layout *sidebar* menggunakan sistem grid Bootstrap 5.
 
 <img width="1919" height="949" alt="image" src="https://github.com/user-attachments/assets/365d5f3a-04bb-409e-9869-fcc703a8e246" />
 
+---
+
+### Praktikum 7: Upload File Gambar
+
+Pada praktikum ini, dilakukan penambahan fitur unggah (*upload*) file gambar yang difungsikan sebagai sampul (*cover* / *thumbnail*) utama untuk setiap artikel. Fitur ini diimplementasikan baik pada saat menambahkan artikel baru maupun saat mengubah artikel lama.
+
+#### 1. Persiapan Direktori
+Sesuai dengan instruksi modul, file gambar yang diunggah oleh pengguna akan disimpan ke dalam folder proyek lokal.
+- **Teknis:** Membuat folder baru bernama `gambar` di dalam direktori `public/` sebagai tempat penyimpanan akhir file fisik gambar.
+
+#### 2. Konfigurasi Controller (`Artikel.php`)
+Melakukan modifikasi pada method `add()` dan `edit()` untuk menangani proses penangkapan file dari form dan memindahkannya ke folder tujuan
+- **Teknis:** 
+  - Menggunakan fungsi `$this->request->getFile('gambar')` untuk mengambil data file
+  - Menggunakan `$file->move(ROOTPATH . 'public/gambar')` untuk memindahkan file ke direktori publik
+  - Menyimpan nama asli file gambar ke dalam array data untuk dimasukkan ke kolom `gambar` pada database
+  - Pada method `edit()`, ditambahkan logika untuk mengecek apakah user mengunggah gambar baru atau tetap menggunakan gambar lama.
+
+#### 3. Penyesuaian View (Form HTML)
+Mengubah struktur form pada file `form_add.php` dan `form_edit.php` agar dapat memproses pengiriman file
+- **Teknis:** 
+  - Menambahkan atribut wajib `enctype="multipart/form-data"` pada tag `<form>`[cite: 1].
+  - Menambahkan input field `<input type="file" name="gambar">` yang sudah dikustomisasi menggunakan desain Bootstrap
+
+### Screenshot Hasil Praktikum 7
+<img width="1919" height="944" alt="image" src="https://github.com/user-attachments/assets/eb9d49dd-23d9-4cc6-8aa0-61d9791ff5fe" />
+
+<img width="1919" height="952" alt="image" src="https://github.com/user-attachments/assets/0690c3e4-0b4b-49ca-886c-49693b42babe" />
+
+<img width="1919" height="1010" alt="image" src="https://github.com/user-attachments/assets/dc3b74fa-257e-4c0c-94dd-7486d08c46e2" />
+
 
 ---
 © 2026 - Abdi Putra Perdana - Universitas Pelita Bangsa

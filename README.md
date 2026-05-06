@@ -511,6 +511,26 @@ Mengubah struktur form pada file `form_add.php` dan `form_edit.php` agar dapat m
 
 
 ---
+
+### Praktikum 8: Implementasi AJAX
+
+Pada praktikum ini, diimplementasikan teknologi AJAX (*Asynchronous JavaScript and XML*) untuk memanipulasi data artikel tanpa perlu memuat ulang (*reload*) halaman secara keseluruhan. Hal ini dilakukan untuk meningkatkan responsivitas dan *User Experience* (UX).
+
+#### 1. Controller AJAX (`AjaxController.php`)
+Membuat controller khusus untuk menangani *request* AJAX dari *client-side*. Method-method di dalamnya menggunakan fungsi `$this->response->setJSON()` untuk merespons *request* dengan mengirimkan data dalam format JSON kembali ke *browser*.
+
+#### 2. Operasi CRUD Asynchronous via jQuery
+- **Read & Delete:** Menampilkan daftar data artikel dan menghapus data menggunakan metode request AJAX (`$.ajax`) dengan *library* jQuery.
+- **Create & Update (Improvisasi):** Sesuai instruksi untuk melakukan improvisasi, penambahan dan pengubahan data tidak menggunakan halaman terpisah. Keduanya digabungkan menggunakan **Bootstrap Modal** interaktif. Proses *submit* form ditangani menggunakan AJAX POST ke method `save()`, sehingga pembaruan tabel terjadi secara seketika tanpa *refresh* halaman.
+
+### Screenshot Hasil Praktikum 8
+<img width="1919" height="951" alt="image" src="https://github.com/user-attachments/assets/5e293254-87ef-43a0-9515-883e5c0c53a9" />
+
+<img width="1919" height="946" alt="image" src="https://github.com/user-attachments/assets/de9623b2-57fe-40bf-ae90-0bc940447e42" />
+
+
+---
+
 © 2026 - Abdi Putra Perdana - Universitas Pelita Bangsa
 
 

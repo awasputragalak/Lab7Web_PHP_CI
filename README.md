@@ -529,8 +529,24 @@ Membuat controller khusus untuk menangani *request* AJAX dari *client-side*. Met
 <img width="1919" height="946" alt="image" src="https://github.com/user-attachments/assets/de9623b2-57fe-40bf-ae90-0bc940447e42" />
 
 
+### Praktikum 9: Implementasi AJAX Pagination dan Search
+
+Pada praktikum ini, fungsionalitas AJAX ditingkatkan untuk menangani proses *Pagination* (Paginasi), *Search* (Pencarian), dan *Filtering* (Penyaringan) secara *asynchronous*. Hal ini membuat aplikasi web menjadi *Single Page Application* (SPA) parsial di mana pengguna dapat mencari dan menavigasi data besar tanpa perlu memuat ulang keseluruhan halaman web.
+
+#### 1. Controller API (`Artikel.php`)
+Melakukan modifikasi pada method `admin_index()` agar dapat menerima parameter GET dari *client-side* (seperti `q` untuk pencarian, `kategori_id` untuk filter, dan `page` untuk paginasi). Method ini kemudian mengembalikan objek JSON yang berisi array data artikel dan *string* HTML untuk tautan paginasi Bootstrap.
+
+#### 2. Implementasi Client-Side (jQuery AJAX)
+- **Search & Filter:** Menangkap *event* `submit` pada form pencarian dan *event* `change` pada *dropdown* kategori untuk memicu pemanggilan data AJAX secara otomatis.
+- **Paginasi AJAX:** Mengubah perilaku *default* tombol paginasi CodeIgniter 4 dengan menggunakan `e.preventDefault()`, lalu mengambil URL tautannya untuk diproses via AJAX.
+- **Loading Indicator & Sorting (Tugas Tambahan):** Menambahkan animasi *spinner* Bootstrap saat data sedang diambil dari server (*loading indicator*). Selain itu, diimplementasikan juga fitur untuk mengurutkan (*sorting*) data berdasarkan judul dan waktu terbaru.
+
+### Screenshot Hasil Praktikum 9
+
+<img width="1919" height="952" alt="image" src="https://github.com/user-attachments/assets/94f49606-f42c-48f9-89cd-fb195a860eda" />
+
+<img width="1919" height="954" alt="image" src="https://github.com/user-attachments/assets/e7704677-89ee-432b-9e1d-d600529c40ed" />
+
+
 ---
-
 © 2026 - Abdi Putra Perdana - Universitas Pelita Bangsa
-
-

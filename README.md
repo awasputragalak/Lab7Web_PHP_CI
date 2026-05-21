@@ -548,5 +548,30 @@ Melakukan modifikasi pada method `admin_index()` agar dapat menerima parameter G
 <img width="1919" height="954" alt="image" src="https://github.com/user-attachments/assets/e7704677-89ee-432b-9e1d-d600529c40ed" />
 
 
+### Praktikum 10: Pembuatan REST API
+
+Pada praktikum ini, dibangun sebuah web service berbasis REST API (Representational State Transfer) menggunakan CodeIgniter 4. API ini berfungsi sebagai penyedia resource data artikel dalam format JSON yang dapat dikonsumsi oleh REST Client dari berbagai platform aplikasi.
+
+#### 1. Controller API (`Post.php`)
+Membuat kelas controller yang meng-extends `ResourceController` serta menggunakan `ResponseTrait`. Controller ini memuat 5 metode utama untuk operasi CRUD:
+- `index()`: Mengambil dan menampilkan semua data artikel.
+- `create()`: Menerima HTTP POST request untuk menambahkan data artikel baru.
+- `show($id)`: Mengambil satu data artikel secara spesifik berdasarkan ID.
+- `update($id)`: Menerima HTTP PUT request untuk memodifikasi data artikel yang ada.
+- `delete($id)`: Menerima HTTP DELETE request untuk menghapus data dari database.
+
+#### 2. Konfigurasi Endpoint (Routes)
+Menggunakan `$routes->resource('post');` pada file `Routes.php` untuk menghasilkan pemetaan endpoint RESTful secara otomatis untuk semua HTTP verbs (GET, POST, PUT, PATCH, DELETE).
+
+### Screenshot Hasil Pengujian menggunakan Postman
+<img width="1023" height="537" alt="image" src="https://github.com/user-attachments/assets/c34c3e07-156d-41a1-aad8-3b255b983b81" />
+
+<img width="1919" height="1004" alt="image" src="https://github.com/user-attachments/assets/e0319b9f-679e-4757-a09a-27098ce37b45" />
+
+<img width="1919" height="1010" alt="image" src="https://github.com/user-attachments/assets/0082ba8a-a72b-436d-b2b7-71ae8b758099" />
+
+<img width="1919" height="1000" alt="image" src="https://github.com/user-attachments/assets/eda81fb7-72e8-4f3f-8073-d166ee688710" />
+
+
 ---
 © 2026 - Abdi Putra Perdana - Universitas Pelita Bangsa

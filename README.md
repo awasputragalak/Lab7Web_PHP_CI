@@ -573,5 +573,26 @@ Menggunakan `$routes->resource('post');` pada file `Routes.php` untuk menghasilk
 <img width="1919" height="1000" alt="image" src="https://github.com/user-attachments/assets/eda81fb7-72e8-4f3f-8073-d166ee688710" />
 
 
+### Praktikum 11: Implementasi Frontend API dengan VueJS 3
+
+Pada praktikum ini, dibangun sebuah aplikasi *Frontend* menggunakan framework VueJS 3 untuk mengkonsumsi REST API yang telah dibuat pada Praktikum 10. Aplikasi ini berjalan secara independen dan berkomunikasi dengan *backend* melalui AJAX requests menggunakan *library* Axios.
+
+#### 1. Inisialisasi VueJS & Axios
+Aplikasi dibangun menggunakan pendekatan CDN tanpa *build tools*, mengintegrasikan `vue.global.js` dan `axios.min.js`. Logika aplikasi dibungkus dalam metode `createApp` dari Vue.
+
+#### 2. Implementasi Fitur (Improvisasi UI)
+- **Data Binding (Reactive):** Variabel `artikel` secara otomatis me-render baris tabel HTML menggunakan direktif `v-for`.
+- **Create & Update (Modal):** Penginputan data tidak berpindah halaman, melainkan menggunakan sistem Modal interaktif dengan kondisi `v-if="showForm"`. Data form diikat ke variabel *state* menggunakan `v-model`.
+- **CRUD via Axios:**
+  - `axios.get()` digunakan pada lifecycle `mounted()` untuk menampilkan data awal.
+  - `axios.post()` dan `axios.put()` digunakan pada fungsi `saveData()` untuk operasi penambahan dan modifikasi data.
+  - `axios.delete()` digunakan pada fungsi `hapus()` untuk menyingkirkan data dari database.
+
+### Screenshot Hasil Praktikum 11
+   
+<img width="1919" height="959" alt="image" src="https://github.com/user-attachments/assets/2c63c94a-58d5-450a-b247-9fd74b225e8b" />
+
+<img width="1916" height="947" alt="image" src="https://github.com/user-attachments/assets/c8ad228d-1e7f-48d5-8970-1240a37c5e72" />
+
 ---
 © 2026 - Abdi Putra Perdana - Universitas Pelita Bangsa

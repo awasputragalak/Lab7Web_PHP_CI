@@ -594,5 +594,29 @@ Aplikasi dibangun menggunakan pendekatan CDN tanpa *build tools*, mengintegrasik
 
 <img width="1916" height="947" alt="image" src="https://github.com/user-attachments/assets/c8ad228d-1e7f-48d5-8970-1240a37c5e72" />
 
+### Praktikum 12: VueJS Komponen dan Routing (Single Page Application)
+
+Pada praktikum ini, aplikasi *Frontend* dirombak menggunakan arsitektur berbasis komponen dan diintegrasikan dengan **Vue Router**. Hal ini mengonversi web menjadi *Single Page Application* (SPA) yang memungkinkan navigasi antar halaman terjadi di sisi klien tanpa melakukan *hard-reload* pada *browser*.
+
+#### 1. Pembuatan Vue Components
+Logika antarmuka dipecah menjadi tiga komponen terisolasi yang disimpan dalam folder `assets/js/components/`:
+- `Home.js`: Menyajikan halaman sambutan dan informasi awal.
+- `Artikel.js`: Mengisolasi seluruh logika CRUD (Create, Read, Update, Delete) serta form *modal* yang berkomunikasi dengan REST API CodeIgniter.
+- `About.js` (Tugas Tambahan): Komponen khusus yang menampilkan profil identitas *developer* mahasiswa.
+
+#### 2. Konfigurasi Vue Router
+Menginisialisasi `createRouter` pada `app.js` menggunakan mode `createWebHashHistory()` untuk memetakan path URL (`/`, `/artikel`, `/about`) ke masing-masing komponen. 
+
+#### 3. Modifikasi Master Layout
+Mengubah `index.html` menjadi *master layout* tunggal. Tag `<router-link>` digunakan pada menu navigasi untuk mencegah *default refresh* halaman, sedangkan tag `<router-view>` bertindak sebagai kontainer dinamis yang memuat komponen sesuai URL yang sedang aktif.
+
+### Screenshot Hasil Praktikum 12
+
+<img width="1919" height="945" alt="image" src="https://github.com/user-attachments/assets/151916f9-3af3-4a6d-9d80-d236904d8e10" />
+
+<img width="1918" height="942" alt="image" src="https://github.com/user-attachments/assets/458660ce-fa4b-4b5a-8e50-d5b0b45cde21" />
+
+<img width="1919" height="946" alt="image" src="https://github.com/user-attachments/assets/9c74754a-9f9d-4d07-96e7-ff615f5b3874" />
+
 ---
 © 2026 - Abdi Putra Perdana - Universitas Pelita Bangsa

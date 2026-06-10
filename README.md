@@ -618,5 +618,26 @@ Mengubah `index.html` menjadi *master layout* tunggal. Tag `<router-link>` digun
 
 <img width="1919" height="946" alt="image" src="https://github.com/user-attachments/assets/9c74754a-9f9d-4d07-96e7-ff615f5b3874" />
 
----
-© 2026 - Abdi Putra Perdana - Universitas Pelita Bangsa
+### Praktikum 13 & 14: Keamanan SPA (VueJS) & Keamanan API (CodeIgniter 4)
+
+Pada praktikum gabungan ini, diimplementasikan sistem keamanan end-to-end yang melindungi jalur rute aplikasi di sisi klien maupun jalur manipulasi database di sisi server.
+
+#### 1. Pembatasan Hak Akses Rute (Navigation Guards)
+Mengamankan komponen `Artikel.js` dan `About.js` menggunakan fitur `router.beforeEach()` pada VueJS. Sistem akan bertindak sebagai pencegat perpindahan rute untuk memverifikasi eksistensi kredensial otentikasi di dalam `localStorage`. Pengguna yang belum memiliki hak akses akan diarahkan secara paksa ke modul Login yang diakses melalui API `/api/login`.
+
+#### 2. Implementasi Filter & Token-Based Authentication
+Menutup celah keamanan pada endpoint REST API CodeIgniter 4 dengan menciptakan `ApiAuthFilter.php`. Filter ini mendeteksi keberadaan HTTP Header `Authorization: Bearer <token>` pada setiap request metode POST, PUT, dan DELETE. Tanpa token yang valid, server akan menolak manipulasi data dan mengembalikan respon error 401 Unauthorized.
+
+#### 3. Otomatisasi Transmisi dengan Axios Interceptors
+Untuk menghindari pengikatan token secara manual pada setiap fungsi CRUD, digunakan Axios Interceptors di VueJS. Fitur ini secara otomatis menyuntikkan token dari `localStorage` ke dalam HTTP Headers pada setiap keberangkatan request, serta memiliki logika respons global yang mengelola pembersihan sesi apabila server mengembalikan kode 401.
+
+**Kesimpulan Analisis Perbedaan Vue Navigation Guards & CI4 Filters:**
+Vue Router Navigation Guards (Client-Side) berfungsi hanya untuk menyembunyikan atau membatasi rute antarmuka pengguna di sisi browser, namun tidak bisa mencegah eksekusi server langsung. Sebaliknya, CodeIgniter Filters (Server-Side) berfungsi mengunci gerbang lalu lintas data di backend yang merupakan pertahanan mutlak, namun tidak memengaruhi render tampilan di browser. Kombinasi keduanya menggunakan Axios Interceptors menciptakan sistem *Single Page Application* yang aman luar dalam.
+
+### Lampiran Screenshot Pengujian
+<img width="1915" height="926" alt="image" src="https://github.com/user-attachments/assets/9387a505-f017-4ff5-ba01-d138b6aef104" />
+
+<img width="1919" height="946" alt="image" src="https://github.com/user-attachments/assets/2a207136-dde1-4609-99f5-5a32f95b4a84" />
+
+*(Screenshot 3: Pengujian Postman menembak API tanpa Token menghasilkan 401 Unauthorized)*
+*(Screenshot 4: Bukti penyuntikkan Authorization Header Token otomatis pada DevTools Network)*

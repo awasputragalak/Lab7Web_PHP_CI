@@ -574,4 +574,44 @@ Menggunakan `$routes->resource('post');` pada file `Routes.php` untuk menghasilk
 
 
 ---
-© 2026 - Abdi Putra Perdana - Universitas Pelita Bangsa
+
+### Praktikum 11: Pembuatan RESTful API Backend (CodeIgniter 4)
+Pada tahap ini, fokus utama adalah membangun fondasi *Backend* yang berfungsi sebagai penyedia data (API) untuk aplikasi *Frontend*.
+*   **Konfigurasi Database:** Mengatur koneksi CodeIgniter 4 ke database MySQL.
+*   **Resource Controller:** Membuat `Post.php` menggunakan fitur `ResourceController` untuk mempermudah operasi CRUD (*Create, Read, Update, Delete*) dalam format JSON.
+*   **Konfigurasi CORS (Cross-Origin Resource Sharing):** Menambahkan *header* CORS pada *constructor controller* agar API dapat diakses oleh antarmuka VueJS yang berjalan di *port* atau *host* yang berbeda.
+*   **Routing API:** Mengatur `$routes->resource('post');` pada konfigurasi *routes* untuk membuka jalur *endpoint* API.
+
+### Praktikum 12: Pembuatan Frontend SPA (VueJS & Vue Router)
+Tahap ini membangun antarmuka pengguna (UI) yang dinamis tanpa memuat ulang halaman (*reload*), menggunakan VueJS berbasis CDN.
+*   **Vue Router:** Menerapkan *Client-Side Routing* untuk berpindah antar halaman komponen secara instan (`Home`, `About`, dan `Artikel`).
+*   **Komponen UI:** Membangun struktur modular menggunakan *file* komponen JavaScript terpisah untuk setiap halaman demi menjaga kode tetap bersih (*clean code*).
+*   **Integrasi Axios:** Menggunakan pustaka Axios untuk melakukan *HTTP request* (GET, POST, PUT, DELETE) guna menampilkan dan memanipulasi data secara langsung dari API CodeIgniter.
+
+### Praktikum 13: Keamanan Frontend & Skenario Otentikasi
+Penerapan lapisan keamanan awal pada sisi *Frontend* untuk membatasi akses halaman bagi pengguna yang belum terotentikasi.
+*   **Sistem Login:** Membuat komponen `Login.js` yang berisi formulir autentikasi kredensial.
+*   **Navigation Guards:** Mengamankan *route* `/artikel` menggunakan fitur `beforeEach` pada Vue Router. Sistem otomatis menolak akses dan memunculkan peringatan jika pengguna belum masuk (*login*).
+*   **Manajemen Sesi (State):** Menyimpan status aktif dan `Token` di dalam *LocalStorage browser* setelah kredensial pengguna tervalidasi.
+*   **UI Dinamis:** Mengatur visibilitas menu navigasi secara dinamis (menyembunyikan menu "Login" dan memunculkan "Logout" serta "Kelola Artikel") berdasarkan status sesi pengguna.
+
+### Praktikum 14: Keamanan Backend API & Axios Interceptors
+Penyelesaian arsitektur keamanan tingkat lanjut dengan memvalidasi setiap permintaan data langsung di sisi *Backend*.
+*   **API Otentikasi:** Membuat *controller* khusus `Auth.php` untuk mencocokkan *email* dan *password* dengan *database*, kemudian men-generate respons Token.
+*   **CodeIgniter Filters:** Mengimplementasikan fitur *Filters* API (`TokenFilter.php`) sebagai pengaman rute. Rute modifikasi data (POST, PUT, DELETE) akan mengembalikan status `401 Unauthorized` jika *request* tidak menyertakan Token yang valid.
+*   **Axios Interceptors:** Mengonfigurasi VueJS agar secara otomatis menyuntikkan Token keamanan ke dalam *Header Authorization* setiap kali melakukan *request* ke rute API yang dilindungi.
+*   **Penanganan CORS Preflight:** Mengatasi pembatasan keamanan *browser* (metode *request OPTIONS*) dengan membuka jalur perizinan HTTP 200 OK di dalam *Routes* dan *Controller*.
+
+---
+
+## Panduan Menjalankan Aplikasi
+
+Aplikasi ini menggunakan arsitektur *decoupled*, di mana perutean disarankan langsung melalui server Apache lokal untuk stabilitas penuh.
+
+**1. Konfigurasi XAMPP**
+Pastikan modul **Apache** dan **MySQL** dalam status berjalan (aktif) di XAMPP Control Panel.
+
+**2. Akses Frontend (Aplikasi Utama)**
+Buka peramban web (*browser*) dan arahkan ke direktori penyimpanan *Frontend* Anda di dalam *htdocs*, contoh:
+```text
+http://localhost/lab8_vuejs/
